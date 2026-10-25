@@ -1,62 +1,108 @@
-# TaskFlow — full-stack task manager
+# TaskFlow
 
-A responsive task manager built with React + Vite, CSS, JavaScript, Express, MongoDB, and JWT authentication.
+A task management web application built with React, Vite, Node.js, and Express.
 
-## What works
-- Register, log in, and log out
-- Each account sees only its own tasks
-- Create, edit, complete, delete, search, and filter tasks
-- Priority, due date, and category
-- Dashboard counts and progress
-- MongoDB persistence: tasks remain after refresh/reopening and are isolated by account
-- Responsive layout with a fixed app shell and scrolling inside the content panel
+**Live Demo:** [Try TaskFlow](https://task-flow-jade-eta-96.vercel.app/)
 
-## Requirements
-- Node.js 20+ recommended
-- MongoDB running locally, or a MongoDB Atlas connection string
+## Tech Stack
 
-## 1. Configure the backend
-Open a terminal in `server`:
+**Frontend**
+- React
+- JavaScript
+- Vite
+- CSS
+
+**Backend**
+- Node.js
+- Express.js
+
+**Database**
+- MongoDB
+- Mongoose
+
+**Authentication & Security Libraries**
+- JSON Web Token (JWT)
+- bcryptjs
+- Google Auth Library
+- Express Rate Limit
+
+## Project Structure
+
+```text
+taskflow/
+├── client/
+│   ├── public/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── styles.css
+│   ├── package.json
+│   └── vite.config.js
+├── server/
+│   ├── src/
+│   │   ├── middleware/
+│   │   │   └── auth.js
+│   │   ├── models/
+│   │   │   ├── Task.js
+│   │   │   └── User.js
+│   │   ├── routes/
+│   │   │   ├── auth.js
+│   │   │   └── tasks.js
+│   │   └── index.js
+│   └── package.json
+├── .gitignore
+└── README.md
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js and npm
+- A MongoDB instance, if using the backend's database features
+
+### 1. Clone the repository
 
 ```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+cd taskflow
+```
+
+### 2. Start the backend
+
+```bash
+cd server
 npm install
 ```
 
-Copy `.env.example` to `.env` and set `MONGODB_URI` and a long random `JWT_SECRET`.
+Configure the required environment variables using `server/.env.example`.
 
-Start the API:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-The API runs on `http://localhost:5000`.
+### 3. Start the frontend
 
-## 2. Configure the frontend
-Open a second terminal in `client`:
+Open a second terminal in the project root:
 
 ```bash
+cd client
 npm install
 npm run dev
 ```
 
-Open the local URL Vite prints (normally `http://localhost:5173`).
+Open the local URL provided by Vite.
 
-## MongoDB
-Local default:
-`mongodb://127.0.0.1:27017/taskflow`
+Ensure the frontend's API configuration matches the backend URL if the application uses the backend.
 
-For multiple users online, deploy the API and frontend and use MongoDB Atlas. Set the frontend's `VITE_API_URL` to your deployed API URL, and set the backend's `CLIENT_ORIGIN` to your deployed frontend origin.
+## Environment Variables
 
-## Deploy outline
-- Database: MongoDB Atlas
-- API: Render, Railway, or another Node hosting provider
-- Frontend: Vercel, Netlify, or another static host
-- Set environment variables on the hosting providers; never upload `.env`.
+Use the relevant `.env.example` files to configure environment variables. Do not commit actual `.env` files containing secrets or credentials.
 
-## Important production notes
-This is a functional starter, not a security-audited production service. For a public launch, use HTTPS, a strong unique `JWT_SECRET`, rate limiting, email verification/password reset, monitoring, and preferably move auth tokens to secure HttpOnly cookies. Add privacy/terms pages before collecting real user data.
+## Author
 
-## Project layout
-- `client/` — React + Vite frontend
-- `server/` — Express API, Mongoose models, authentication middleware
+**Shivika Mehlawat**
+
+[GitHub Profile](https://github.com/shivika-m)
